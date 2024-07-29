@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/KOMIKAP.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends CanvasLayer
+var score = 0
+onready var scoreText = $\"%score\"
+
+
+func _ready():
+	pass
+func updateScore():
+	score += 1
+	scoreText.text = \"Score : \" + str(score)
+"
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 1 )
+
+[node name="TextHolder" type="CanvasLayer"]
+script = SubResource( 2 )
+
+[node name="score" type="Label" parent="."]
+unique_name_in_owner = true
+margin_right = 203.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 1 )
+text = "Score : 0"
